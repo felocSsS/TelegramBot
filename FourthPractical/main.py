@@ -33,7 +33,7 @@ async def process_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['firstname']= message.text
     await Form.next()
-    await message.reply("Какая у тебя фамилия?")
+    await message.reply("Какое твое настоящее имя?")
 
 @dp.message_handler(state=Form.lastname)
 async def process_name(message: types.Message, state: FSMContext):
@@ -69,7 +69,7 @@ async def process_gender(message: types.Message, state: FSMContext):
             md.text(
                 md.text('Рад знакомству!,', md.bold(data['firstname'] + " " + data['lastname'])),
                 md.text('Твоя группировка: ', data['group']),
-                md.text('Пришел в зону' , data['startedu']),
+                md.text('Пришел в зону в' , data['startedu']),
                 sep='\n',
             ),
             reply_markup=markup,
